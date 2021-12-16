@@ -6,7 +6,7 @@
 	<groupId>org.springframework</groupId>
 	<artifactId>gs-maven</artifactId>
 	<packaging>jar</packaging>
-	<version>0.1.0</version>
+	<version>${env.VERSION}.${env.BUILD_ID}.RELEASE</version>
 
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -25,7 +25,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>4.13.1</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- end::junit[] -->
@@ -55,5 +55,34 @@
 			</plugin>
 		</plugins>
 	</build>
+<repositories>
+	<repository>
+  <id>test</id>
+  <url>https://pkgs.dev.azure.com/osk-microsoft/_packaging/test/maven/v1</url>
+  <releases>
+    <enabled>true</enabled>
+  </releases>
+  <snapshots>
+    <enabled>true</enabled>
+  </snapshots>
+</repository>
+</repositories>
 
+
+  <distributionManagement>
+    <repository>
+      <id>test</id>
+      <url>https://pkgs.dev.azure.com/osk-microsoft/_packaging/test/maven/v1</url>
+      <layout>default</layout>
+      <name>OMD Maven Release Feed</name>
+      <uniqueVersion>true</uniqueVersion>
+    </repository>
+    <snapshotRepository>
+      <id>test</id>
+      <url>https://pkgs.dev.azure.com/osk-microsoft/_packaging/test/maven/v1</url>
+      <layout>default</layout>
+      <name>OMD Maven Snapshot Feed</name>
+      <uniqueVersion>true</uniqueVersion>
+    </snapshotRepository>
+  </distributionManagement>
 </project>
